@@ -8,4 +8,5 @@ public interface StudentDao {
 
 	public int addStudent(Student student);
 	public List<Student> findAllStudents();
+	public Student findStudentByRollNo(int id);
 }

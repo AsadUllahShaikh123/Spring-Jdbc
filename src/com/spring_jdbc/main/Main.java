@@ -1,7 +1,5 @@
 package com.spring_jdbc.main;
 
-import java.util.List;
-
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -22,11 +20,17 @@ public class Main {
 //		
 //		int added = dao.addStudent(student);
 //		System.out.println("Data inserted ... " + added);
+
+		// ==== Get All Students =========
+//		System.out.println("Hello from Debugging....");
+//		List<Student> list = dao.findAllStudents();
+//		for(Student student : list) {
+//			System.out.println(student);
+//		}
 		
+		// ==== Get Specific Student ==== 
 		
-		List<Student> list = dao.findAllStudents();
-		for(Student student : list) {
-			System.out.println(student);
-		}
+		Student student = dao.findStudentByRollNo(5);
+		System.out.print(student);
 	}
 }

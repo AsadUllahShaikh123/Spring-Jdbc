@@ -29,6 +29,13 @@ public class StudentDaoImpl implements StudentDao {
 
 		String sql = "select * from student";
 		
+		RowMapper<Student> rowMapper = getRowMapper();
+		
+		List<Student> list = jdbc.query(sql,rowMapper);
+		
+		return list;
+	}
+	private RowMapper<Student> getRowMapper() {
 		RowMapper<Student> rowMapper = new RowMapper<Student>() {
 
 			@Override
@@ -38,15 +45,19 @@ public class StudentDaoImpl implements StudentDao {
 				student.setId(rs.getInt("id"));
 				student.setName(rs.getString("name"));
 				student.setAddress(rs.getString("address"));
-				System.out.println("Row Number : " + rowNum);
 				return student;
 			}
 			
 		};
+		return rowMapper;
+	}
+	@Override
+	public Student findStudentByRollNo(int id) {
+		String sql = "select * from student where id = ?";
 		
-		List<Student> list = jdbc.query(sql,rowMapper);
+		Student student = jdbc.queryForObject(sql, getRowMapper(),id);
 		
-		return list;
+		return student;
 	}
 
 }

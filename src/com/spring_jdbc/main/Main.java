@@ -1,5 +1,6 @@
 package com.spring_jdbc.main;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.context.ApplicationContext;
@@ -41,8 +42,29 @@ public class Main {
 //		System.out.println("Record Deleted Successfully ... " + deleted);
 
 		
+		// === Delete Record By Student Name and Address 
+		
+//		int deletedRecords = dao.deleteRecordByStudentNameAndAddress("Asadullah", "karachi");
+//		
+//		System.out.println("Records Deleted successfully" + deletedRecords);
+		
+//		=== Adding Mulitple Students ==== 
 		
 		
+		
+		Student std1 = new Student("Asad","moro");
+		Student std2 = new Student("Azhar","karachi");
+		Student std3 = new Student("Safdar","Hyderabad");
+		Student std4 = new Student("Mazhar","Islamabad");
+		
+		List<Student> list = new ArrayList<Student>();
+		list.add(std1);
+		list.add(std2);
+		list.add(std3);
+		list.add(std4);
+		
+		int rowsAdded = dao.addMultipleStudents(list);
+		System.out.println("Rows Added using Batch Insert Operation .. " + rowsAdded);
 		
 		
 	}

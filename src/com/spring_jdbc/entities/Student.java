@@ -8,6 +8,15 @@ public class Student {
 	private int id;
 	private String name;
 	private String address;
+	
+	public Student() {
+		
+	}
+	public Student(String name, String address) {
+		this.name = name;
+		this.address = address;
+	}
+	
 	public int getId() {
 		return id;
 	}

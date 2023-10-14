@@ -10,5 +10,7 @@ public interface StudentDao {
 	public List<Student> findAllStudents();
 	public Student findStudentByRollNo(int id);
 	public boolean deleteRecord(int id);
+	public int deleteRecordByStudentNameAndAddress(String name,String address);
+	public int addMultipleStudents(List<Student> students);
 
 }

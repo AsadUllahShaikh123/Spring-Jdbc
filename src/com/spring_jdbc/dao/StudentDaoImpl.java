@@ -2,6 +2,7 @@ package com.spring_jdbc.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -72,6 +73,31 @@ public class StudentDaoImpl implements StudentDao {
 		String sql = "delete from student where id = ? ";
 		int rowsDeleted = jdbc.update(sql,id);
 		return rowsDeleted == 1;
+	}
+	@Override
+	public int deleteRecordByStudentNameAndAddress(String name, String address) {
+		
+		String sql = "delete from student where name =? and address =?";
+		Object[] args = {name,address};
+		
+		int rowsDeleted = jdbc.update(sql,args);
+		
+		
+		return rowsDeleted;
+	}
+	@Override
+	public int addMultipleStudents(List<Student> students) {
+		
+		List<Object[]> argsList = new ArrayList<Object[]>(); 
+		String sql = "insert into student(name,address) values(?,?)";
+		for(Student student : students) {
+			Object[] args = {student.getName(),student.getAddress()};
+			argsList.add(args);
+		}
+		
+		int [] rows = jdbc.batchUpdate(sql,argsList);
+		
+		return rows.length;
 	}
 
 }

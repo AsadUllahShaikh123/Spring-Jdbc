@@ -66,5 +66,12 @@ public class StudentDaoImpl implements StudentDao {
 		
 		return student;
 	}
+	@Override
+	public boolean deleteRecord(int id) {
+	
+		String sql = "delete from student where id = ? ";
+		int rowsDeleted = jdbc.update(sql,id);
+		return rowsDeleted == 1;
+	}
 
 }

@@ -24,15 +24,26 @@ public class Main {
 //		System.out.println("Data inserted ... " + added);
 
 //		 ==== Get All Students =========
-		System.out.println("Hello from Debugging....");
-		List<Student> list = dao.findAllStudents();
-		for(Student student : list) {
-			System.out.println(student);
-		}
+//		System.out.println("Hello from Debugging....");
+//		List<Student> list = dao.findAllStudents();
+//		for(Student student : list) {
+//			System.out.println(student);
+//		}
 		
 		// ==== Get Specific Student ==== 
 //		
 //		Student student = dao.findStudentByRollNo(5);
 //		System.out.print(student);
+		
+	   // === Delete the Specific Record === 
+//		
+//		boolean deleted = dao.deleteRecord(5);
+//		System.out.println("Record Deleted Successfully ... " + deleted);
+
+		
+		
+		
+		
+		
 	}
 }

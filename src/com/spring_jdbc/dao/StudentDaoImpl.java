@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;
@@ -31,7 +32,13 @@ public class StudentDaoImpl implements StudentDao {
 		
 		RowMapper<Student> rowMapper = getRowMapper();
 		
-		List<Student> list = jdbc.query(sql,rowMapper);
+//		List<Student> list = jdbc.query(sql,rowMapper);
+		
+		// using BeanPropertyRowMapper;
+		
+		List<Student> list = jdbc.query(sql,new BeanPropertyRowMapper<Student>(Student.class));
+
+		
 		
 		return list;
 	}
@@ -55,7 +62,7 @@ public class StudentDaoImpl implements StudentDao {
 	public Student findStudentByRollNo(int id) {
 		String sql = "select * from student where id = ?";
 		
-		Student student = jdbc.queryForObject(sql, getRowMapper(),id);
+		Student student = jdbc.queryForObject(sql,new BeanPropertyRowMapper<Student>(Student.class),id);
 		
 		return student;
 	}
